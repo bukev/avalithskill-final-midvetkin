@@ -37,6 +37,6 @@ POST http://localhost:3001/favorites
 Content-Type: application/json
 
 {
-    "id_user": 3,
+    "id_user": 5,
     "id_movie": 2
 }
