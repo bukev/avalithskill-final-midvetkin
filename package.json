@@ -1,0 +1,28 @@
+{
+  "name": "avalithskill-final-midvetkin",
+  "version": "1.0.0",
+  "description": "Proyecto final fullstack para Avalith Skill Factory",
+  "main": "index.js",
+  "scripts": {
+    "devStart": "nodemon ./server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bukev/avalithskill-final-midvetkin.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bukev/avalithskill-final-midvetkin/issues"
+  },
+  "homepage": "https://github.com/bukev/avalithskill-final-midvetkin#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

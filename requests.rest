@@ -1,0 +1,42 @@
+GET http://localhost:3001/users
+
+###
+
+POST http://localhost:3001/users
+Content-Type: application/json
+
+{
+    "email": "asd@gmail.com",
+    "password": "asdasd123",
+    "admin": "0"
+}
+
+###
+
+GET http://localhost:3001/movies
+
+###
+
+POST http://localhost:3001/movies
+Content-Type: application/json
+
+{
+    "title": "Pi",
+    "year": "asdasd123",
+    "director": "Darren Aronofsky",
+    "imageurl": "Pi1998.png"
+}
+
+###
+
+GET http://localhost:3001/favorites/2
+
+###
+
+POST http://localhost:3001/favorites
+Content-Type: application/json
+
+{
+    "id_user": 2,
+    "id_movie": 2
+}
