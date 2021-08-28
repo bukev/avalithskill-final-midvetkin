@@ -6,9 +6,11 @@ const db = require('../database/database')
 router
     .get('/:userid', (req, res) => {
     // ----- get favorites (by user id) ----- //
-        db.query('SELECT title, year, director FROM movie_site.favorites fav JOIN movie_site.movie mov ON (fav.id_movie = mov.id) WHERE fav.id_user = ?', [parseInt(req.params.userid)], (err, rows) => {
+        db.query('SELECT title, year, director, imageurl FROM movie_site.favorites fav JOIN movie_site.movie mov ON (fav.id_movie = mov.id) WHERE fav.id_user = ?', [parseInt(req.params.userid)], (err, rows) => {
             if (err) {
-                res.send(err)
+                res.sendStatus(500)
+            } else if (rows.length === 0) {
+                res.sendStatus(404)
             } else {
                 res.send(rows)
             }

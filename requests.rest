@@ -1,25 +1,24 @@
+### Get All Users
 GET http://localhost:3001/users
 
-###
 
+### New User
 POST http://localhost:3001/users
 Content-Type: application/json
-
 {
     "email": "viggo@gmail.com",
     "password": "viggo2018",
     "admin": "0"
 }
 
-###
 
+### Get All Movies
 GET http://localhost:3001/movies
 
-###
 
+### New Movie
 POST http://localhost:3001/movies
 Content-Type: application/json
-
 {
     "title": "Blade Runner",
     "year": "1982",
@@ -27,16 +26,30 @@ Content-Type: application/json
     "imageurl": "blade-runner.png"
 }
 
-###
 
-GET http://localhost:3001/favorites/3
+### Delete Movie
+DELETE http://localhost:3001/movies/1
 
-###
 
+### Update Movie
+PUT http://localhost:3001/movies/2
+Content-Type: application/json
+{
+    "title": "Pi",
+    "year": "1998",
+    "director": "Darren Aronofsky",
+    "imageurl": "pi_aronofsky.png"
+}
+
+
+### Get Favorites by user id
+GET http://localhost:3001/favorites/1
+
+
+### New Favorite
 POST http://localhost:3001/favorites
 Content-Type: application/json
-
 {
-    "id_user": 5,
-    "id_movie": 2
+    "id_user": 1,
+    "id_movie": 1
 }
