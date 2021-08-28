@@ -19,6 +19,7 @@ GET http://localhost:3001/movies
 ### New Movie
 POST http://localhost:3001/movies
 Content-Type: application/json
+
 {
     "title": "Blade Runner",
     "year": "1982",
@@ -34,6 +35,7 @@ DELETE http://localhost:3001/movies/1
 ### Update Movie
 PUT http://localhost:3001/movies/2
 Content-Type: application/json
+
 {
     "title": "Pi",
     "year": "1998",
@@ -49,7 +51,18 @@ GET http://localhost:3001/favorites/1
 ### New Favorite
 POST http://localhost:3001/favorites
 Content-Type: application/json
+
 {
     "id_user": 1,
-    "id_movie": 1
+    "id_movie": 2
+}
+
+
+### Delete Favorite
+POST http://localhost:3001/favorites
+Content-Type: application/json
+
+{
+    "id_user": 1,
+    "id_movie": 2
 }

@@ -1,6 +1,6 @@
 const express = require('express')
 const app = express()
-const PORT = require('../config').app.port
+const PORT = require('../config').port
 const users = require('./routes/users')
 const movies = require('./routes/movies')
 const favorites = require('./routes/favorites')
