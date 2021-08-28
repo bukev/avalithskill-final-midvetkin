@@ -1,7 +1,6 @@
 # avalithskill-final-midvetkin
 Proyecto final fullstack para Avalith Skill Factory
 
-# Consigna
 ## Backend
 Deberán crear una API donde el usuario pueda loguearse utilizando
 su email y su password, y al ser exitoso deberá devolver un token
