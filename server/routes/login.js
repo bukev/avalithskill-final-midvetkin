@@ -1,11 +1,9 @@
 const express = require('express')
 let router = express.Router()
 const db = require('../database/database')
-const jwt = 
+const jwt = require('jsonwebtoken')
 
-
-
-router.get('/', (req, res) => {
+router.post('/', (req, res) => {
     //const accessToken = jwt.sign(user, process.env.ACCESS_TOKEN_SECRET)
     const {email, password} = req.body
 
@@ -15,7 +13,11 @@ router.get('/', (req, res) => {
         } else if (rows.length === 0) {
             res.sendStatus(401)
         } else {
-            res.send(rows)
+            const user = rows[0]
+
+            const token = jwt.sign({user}, 'asd')
+
+            res.json({'token': token})
         }
     })
 
