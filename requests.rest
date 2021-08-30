@@ -11,17 +11,6 @@ Content-Type: application/json
 GET http://localhost:3001/users
 
 
-### New User
-POST http://localhost:3001/users
-Content-Type: application/json
-
-{
-    "email": "viggo@gmail.com",
-    "password": "viggo2018",
-    "admin": "1"
-}
-
-
 ### Get All Movies
 GET http://localhost:3001/movies
 
