@@ -23,8 +23,32 @@ const Auth = (props) => {
         }
 
         fetch('/login', fetchOptions)
-            .then(res => res.json())
-            .then(data => props.setUser(data.token))
+            .then(res => {
+                if(res.ok){
+                    return res.json()
+                } else {
+                    alert('Invalid email or password')
+                    return
+                }
+            })
+            .then(data => {
+                sessionStorage.setItem('token', data.token)
+                //props.setUser(data.token)
+                console.log(sessionStorage.getItem('token'))
+                return sessionStorage.getItem('token')
+            })
+            .then(token => {
+                fetch('/users', {
+                    method: 'POST',
+                    headers: {
+                    'Authorization': 'Bearer ' + token
+                    }
+                })
+                    .then(res => res.json())
+                    .then(data => {props.setUser(data)})
+            })
+            .catch(err => console.log(err))
+
         
     }
 
@@ -42,11 +66,11 @@ const Auth = (props) => {
             <form onSubmit={handleSubmit}>
                 <label>
                     Email
-                    <input onChange={handleInputChange} name="email" type="text"/>
+                    <input onChange={handleInputChange} name="email" type="text" required/>
                 </label>
                 <label>
                     Password
-                    <input onChange={handleInputChange} name="password" type="text"/>
+                    <input onChange={handleInputChange} name="password" type="password" required/>
                 </label>
 
                 <input type="submit" value="submit" />
