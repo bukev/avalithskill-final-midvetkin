@@ -1,7 +1,7 @@
 const express = require('express')
 const router = require('express').Router()
 const db = require('../database/database')
-
+const jwt = require('jsonwebtoken')
 
 router
     .get('/', (req, res) => {
@@ -15,13 +15,16 @@ router
         })
     })
     .post('/', (req, res) => {
-        db.query('INSERT INTO user (email, password, admin) VALUES (?,?,?)', [req.body.email, req.body.password, req.body.admin], (err, rows) => {
-            if (err) {
-                res.sendStatus(500)
-            } else {
-                res.sendStatus(201)
-            }
+    // ----- get user data ----- //
+        const authHeader = req.headers['authorization']
+        const token = authHeader && authHeader.split(' ')[1]
+        
+        jwt.verify(token, 'asd', (err, result) => {
+            if(err) return res.sendStatus(403)
+
+            res.send(result.user)
         })
+    
     })
 
 
