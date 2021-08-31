@@ -1,7 +1,9 @@
 import { useState } from "react"
+import { useHistory } from "react-router-dom"
 
 const MovieCard = (props) => {
 
+    const history = useHistory()
     const [favorite, setFavorite] = useState(props.isFavorite)
 
     const newFavorite = (userid, movieid) => {
@@ -51,6 +53,9 @@ const MovieCard = (props) => {
 
     }
 
+    const handleEdit = () => {
+        history.push('/edit-movie/' + props.id)
+    }
 
 
     return (
@@ -68,8 +73,8 @@ const MovieCard = (props) => {
                     {props.director}
                 </p>
             </div>
-            {props.user.id && <button onClick={handleFavClick}>{favorite ? 'Eliminar de favoritos' : 'Añadir'}</button>}
-            
+            {props.user.id && props.user.admin === 0 && <button onClick={handleFavClick}>{favorite ? 'Remove from favorites' : 'Add to favorites'}</button>}
+            {props.user.admin === 1 ? <button onClick={handleEdit}>Edit</button> : ''}
         </div>
     )
 }

@@ -1,5 +1,4 @@
-import { useParams } from "react-router"
-import { withRouter } from "react-router-dom"
+import { useParams } from "react-router-dom"
 
 
 function EditMovie() {
@@ -11,4 +10,4 @@ function EditMovie() {
     )
 }
 
-export default withRouter(EditMovie)
+export default EditMovie

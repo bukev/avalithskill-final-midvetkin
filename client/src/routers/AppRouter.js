@@ -5,7 +5,6 @@ import Home from '../screens/Home'
 import Favorites from '../screens/Favorites'
 import Auth from '../screens/Auth'
 import EditMovie from '../screens/EditMovie'
-import AddMovie from '../screens/AddMovie'
 
 
 const AppRouter = (props) => {
@@ -17,10 +16,9 @@ const AppRouter = (props) => {
         <Router>
             <Navbar key="navbar" user={user}/>
             <Switch>
-                <Route exact path="/edit-movie/:id">
+                <Route path="/edit-movie/:id">
                     <EditMovie/>
                 </Route>
-                <Route exact path="/add-movie/" component={AddMovie}/>
                 <Route exact path="/favorites">
                     <Favorites user={user} setFavoriteIds={setFavoriteIds}/>
                 </Route>
