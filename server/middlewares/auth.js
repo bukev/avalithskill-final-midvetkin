@@ -4,12 +4,15 @@ const jwt = require('jsonwebtoken')
 const authToken = (req, res, next) => {
     const authHeader = req.headers['authorization']
     const token = authHeader && authHeader.split(' ')[1]
-    console.log('autenticando...')
-    jwt.verify(token, 'asd', (err, user) => {
+    
+    jwt.verify(token, 'asd', (err, result) => {
+        const {user} = result
+        
         if (err) return res.sendStatus(403)
+
         if (user.admin !== 1) {
-            res.sendStatus(401)
-        } else {
+            return res.sendStatus(401)
+        } else if (user.admin === 1) {
             next()
         }
     })

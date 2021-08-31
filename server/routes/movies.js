@@ -5,7 +5,7 @@ const authorize = require('../middlewares/auth')
 
 
 router
-    .get('/', authorize, (req, res) => {
+    .get('/', (req, res) => {
     // ----- get movies ----- //
         db.query('SELECT id, title, year, director, imageurl FROM movie', (err, rows) => {
             if (err) {
@@ -17,7 +17,7 @@ router
             }
         })
     })
-    .post('/', (req, res) => {
+    .post('/', authorize, (req, res) => {
     // ----- new movie ----- //
         db.query('INSERT INTO movie (title, year, director, imageurl) VALUES (?,?,?,?)', [req.body.title, req.body.year, req.body.director, req.body.imageurl], (err, rows) => {
             if (err) {
@@ -27,7 +27,7 @@ router
             }
         })
     })
-    .put('/:id', (req, res) => {
+    .put('/:id', authorize, (req, res) => {
     // ----- modify by id ----- //
         db.query('UPDATE movie SET title = ?, year = ?, director = ?, imageurl = ? WHERE id = ?', [req.body.title, req.body.year, req.body.director, req.body.imageurl, parseInt(req.params.id)], (err, rows) => {
             if (err) {
@@ -39,7 +39,7 @@ router
             }
         })
     })
-    .delete('/:id', (req, res) => {
+    .delete('/:id', authorize, (req, res) => {
     // ----- delete by id ----- //
         db.query('DELETE FROM movie WHERE id = ?', parseInt(req.params.id), (err, rows) => {
             if (err) {

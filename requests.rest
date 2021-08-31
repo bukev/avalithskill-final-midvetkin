@@ -1,32 +1,36 @@
-GET http://localhost:3001/login
-Content-Type: application/json
-
-{
-    "email": "admin@admin.com",
-    "password": "admin"
-}
-
-### Get All Users | For testing purposes
-GET http://localhost:3001/users
-
-
-### New User
-POST http://localhost:3001/users
+POST http://localhost:3001/login
 Content-Type: application/json
 
 {
     "email": "viggo@gmail.com",
-    "password": "viggo2018",
-    "admin": "1"
+    "password": "viggo2018" 
 }
+
+
+### Get All Users | For testing purposes
+GET http://localhost:3001/users
 
 
 ### Get All Movies
 GET http://localhost:3001/movies
 
 
-### New Movie
+### New Movie || Common User
 POST http://localhost:3001/movies
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoxLCJlbWFpbCI6InZpZ2dvQGdtYWlsLmNvbSIsInBhc3N3b3JkIjoidmlnZ28yMDE4IiwiYWRtaW4iOjB9LCJpYXQiOjE2MzAzNjAzODh9.TH6yZYZnz3t9AO28jJzGnLwI6JM0ZF56TGzfx03WuGA
+Content-Type: application/json
+
+{
+    "title": "Blade Runner",
+    "year": "1982",
+    "director": "Ridley Scott",
+    "imageurl": "blade-runner.png"
+}
+
+
+### New Movie || Admin
+POST http://localhost:3001/movies
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoyLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInBhc3N3b3JkIjoiYWRtaW4iLCJhZG1pbiI6MX0sImlhdCI6MTYzMDM2MDAwOH0.t2ZswE5vV5eFEo_a7tmTter7BAx58i-9eJ7FUm1X6Jw
 Content-Type: application/json
 
 {
