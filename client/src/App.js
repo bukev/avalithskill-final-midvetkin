@@ -1,29 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import AppRouter from './routers/AppRouter'
 
 function App() {
 
+  const [user, setUser] = useState(null)
+
   useEffect(() => {
+    console.log(user)
     fetch('/movies')
       .then(res => res.json())
       .then(data => console.log(data))
   })
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <AppRouter setUser={setUser} user={user}/>
   );
 }
 
