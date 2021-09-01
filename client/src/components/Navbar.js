@@ -1,17 +1,24 @@
 import { NavLink } from "react-router-dom"
+import '../styles/navbar.css'
 
 const Navbar = (props) => {
-    console.log(props.user)
-    const Login = props.user.id ? '' : <NavLink exact to="/auth">Login</NavLink>
-    const Favorites = props.user.admin === 0 ? <NavLink exact to="/favorites">Favorites</NavLink> : ''
+    const Login = props.user.id ? '' : <NavLink exact to="/auth" className="loginNavLink" activeClassName="activeNavLink">Login</NavLink>
+    const Favorites = props.user.admin === 0 ? <NavLink exact to="/favorites" activeClassName="activeNavLink">Favorites</NavLink> : ''
 
     return(
-        <nav>
-            <NavLink exact to="/">Home</NavLink>
-            {Favorites}
-            {Login}
+        <div className="navbar">
+            <div className="navbar-content">
+                <h1 className="logo">
+                    Movie Site
+                </h1>
+                <div className="links">
+                    <NavLink exact to="/" activeClassName="activeNavLink">Home</NavLink>
+                    {Favorites}
+                    {Login}
+                </div>
+            </div>
 
-        </nav>
+        </div>
     )
 }
 

@@ -1,0 +1,74 @@
+.navbar {
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1200px;
+    background: #16181d;
+    padding: 12px 24px;
+    border-radius: 18px;
+    box-shadow:
+        0 0px 5.3px rgba(0, 0, 0, 0.028),
+        0 0px 17.9px rgba(0, 0, 0, 0.042),
+        0 0px 80px rgba(0, 0, 0, 0.07);
+}
+
+.logo {}
+
+
+.links a {
+    color: inherit;
+    padding: 8px 12px;
+    margin: 0 8px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all .2s ease;
+}
+
+.activeNavLink {
+    background: #625EEB;
+}
+
+.loginNavLink {
+    background: #f5edff85;
+}
+
+.loginNavLink:first-child {
+    color: #454d5f;
+
+}
+
+.fav-button {
+    width: 42px;
+    height: 42px;
+    border-radius: 100%;
+    padding: 6px;
+    margin-right: 12px;
+    filter: saturate(0) brightness(1.1);
+    display: flex;
+    align-self: flex-end;
+    transition: all .2s ease-out;
+    cursor: pointer;
+}
+
+.fav-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.fav-button:hover {
+    filter: saturate(.5);
+}
+
+.active {
+    filter: none;
+}

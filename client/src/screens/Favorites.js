@@ -9,25 +9,31 @@ const Favorites = (props) => {
         if(props.user) {
             fetch(`/favorites/${props.user.id}`)
                 .then(res => res.json())
-                .then(data =>  setFavorites(data))
+                .then(data => setFavorites(data))
         }
-    })
+        return () => {
+            setFavorites([])
+        }
+    }, [])
 
 
     return(
         <div>
             <h1>Your Favorites</h1>
-            {favorites.map(f => 
-                <MovieCard 
-                    key={f.id} 
-                    user={props.user} 
-                    id={f.id} 
-                    title={f.title} 
-                    director={f.director} 
-                    year={f.year} 
-                    isFavorite={true}
-                />
-            )}
+            <div className="movie-card-container">
+                {favorites.map(f => 
+                    <MovieCard 
+                        key={f.id} 
+                        user={props.user} 
+                        id={f.id} 
+                        title={f.title} 
+                        director={f.director} 
+                        year={f.year}
+                        imageurl={f.imageurl}
+                        isFavorite={true}
+                    />
+                )}
+            </div>
         </div>
     )
 }

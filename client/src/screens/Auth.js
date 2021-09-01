@@ -1,8 +1,9 @@
 import { useState } from "react"
-
+import { useHistory } from "react-router"
 
 const Auth = (props) => {
 
+    const history = useHistory()
     const [formState, setFormState] = useState({
         email: '',
         password: ''
@@ -11,7 +12,6 @@ const Auth = (props) => {
     
     const handleSubmit = (event) => {
         event.preventDefault()
-        console.log(formState)
         
         const fetchOptions = {
             method: 'POST',
@@ -34,7 +34,6 @@ const Auth = (props) => {
             .then(data => {
                 sessionStorage.setItem('token', data.token)
                 //props.setUser(data.token)
-                console.log(sessionStorage.getItem('token'))
                 return sessionStorage.getItem('token')
             })
             .then(token => {
@@ -49,7 +48,7 @@ const Auth = (props) => {
             })
             .catch(err => console.log(err))
 
-        
+        history.push('/')
     }
 
     const handleInputChange = (event) => {

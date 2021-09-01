@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router-dom"
+import '../styles/moviecard.css'
 
 const MovieCard = (props) => {
 
@@ -60,21 +61,25 @@ const MovieCard = (props) => {
 
     return (
         <div className="movie-card">
-            <hr/>
             <img src={props.imageurl}  alt={props.title}/>
             <div className="description">
-                <h4>
+                <p className="movie-card-title">
                     {props.title}
-                </h4>
-                <p>
-                    {props.year}
                 </p>
                 <p>
-                    {props.director}
+                    ({props.year})
+                </p>
+                <p>
+                    Dir. {props.director}
                 </p>
             </div>
-            {props.user.id && props.user.admin === 0 && <button onClick={handleFavClick}>{favorite ? 'Remove from favorites' : 'Add to favorites'}</button>}
-            {props.user.admin === 1 ? <button onClick={handleEdit}>Edit</button> : ''}
+            {props.user.id && props.user.admin === 0 &&
+                <div title={favorite ? 'Remove from Favorites' : 'Add to Favorites'} onClick={handleFavClick} className={favorite ? 'fav-button active' : 'fav-button'}>
+                    <img src="https://image.flaticon.com/icons/png/512/2107/2107845.png" />
+                </div>
+            }
+            {/* {props.user.id && props.user.admin === 0 && <button onClick={handleFavClick} className="fav-button">{favorite ? 'Remove from favorites' : 'Add to favorites'}</button>} */}
+            {props.user.admin === 1 ? <button onClick={handleEdit} className="edit-button">Edit</button> : ''}
         </div>
     )
 }
