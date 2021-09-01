@@ -8,9 +8,10 @@ const Navbar = (props) => {
     return(
         <div className="navbar">
             <div className="navbar-content">
-                <h1 className="logo">
+                {/* <h1 className="logo">
                     Movie Site
-                </h1>
+                </h1> */}
+                <img src="https://image.flaticon.com/icons/png/512/2798/2798007.png" alt="Logo" className="logo"/>
                 <div className="links">
                     <NavLink exact to="/" activeClassName="activeNavLink">Home</NavLink>
                     {Favorites}
