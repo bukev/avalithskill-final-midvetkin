@@ -109,11 +109,11 @@ Y las dependencias del cliente:
 En el root del proyecto, será necesario crear un archivo de configuración **config.js** con la siguiente estructura:
 ```js
     const  app  = {
-	    port,
-	    host,
-	    database,
-	    user,
-	    password,
+        port,
+        host,
+        database,
+        user,
+        password,
     }
 
     module.exports  =  app
