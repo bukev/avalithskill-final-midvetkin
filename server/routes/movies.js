@@ -17,6 +17,18 @@ router
             }
         })
     })
+    .get('/:id', (req, res) => {
+    // ----- get movie by id ----- //
+        db.query('SELECT id, title, year, director, imageurl FROM movie WHERE id=?', [parseInt(req.params.id)], (err, rows) => {
+            if (err) {
+                res.sendStatus(500)
+            } else if (rows.length === 0) {
+                res.sendStatus(404)
+            } else {
+                res.send(rows[0])
+            }
+        })
+    })
     .post('/', authorize, (req, res) => {
     // ----- new movie ----- //
         db.query('INSERT INTO movie (title, year, director, imageurl) VALUES (?,?,?,?)', [req.body.title, req.body.year, req.body.director, req.body.imageurl], (err, rows) => {

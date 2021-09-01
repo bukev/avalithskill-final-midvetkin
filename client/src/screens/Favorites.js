@@ -1,11 +1,18 @@
 import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
 import MovieCard from "../components/MovieCard"
 
 const Favorites = (props) => {
 
+    const history = useHistory()
     const [favorites, setFavorites] = useState([])
 
     useEffect(() => {
+
+        if (!props.user.id) {
+            history.push('/auth')
+        }
+
         if(props.user) {
             fetch(`/favorites/${props.user.id}`)
                 .then(res => res.json())

@@ -79,7 +79,7 @@ const MovieCard = (props) => {
                 </div>
             }
             {/* {props.user.id && props.user.admin === 0 && <button onClick={handleFavClick} className="fav-button">{favorite ? 'Remove from favorites' : 'Add to favorites'}</button>} */}
-            {props.user.admin === 1 ? <button onClick={handleEdit} className="edit-button">Edit</button> : ''}
+            {props.user.admin === 1 ? <div onClick={handleEdit} className="edit-button">Edit</div> : ''}
         </div>
     )
 }

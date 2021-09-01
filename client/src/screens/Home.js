@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react"
+import { useHistory } from "react-router-dom"
 import MovieCard from "../components/MovieCard"
+import '../styles/home.css'
 
 const Home = (props) => {
     
+    const history = useHistory()
     const [movies, setMovies] = useState([])
     const [favoriteIds, setFavoriteIds] = useState([])
 
@@ -22,7 +25,10 @@ const Home = (props) => {
     
     return(
         <div>
-            <h1>Home</h1>
+            <div className="home-title">
+                <h1>Home</h1>
+                {props.user.admin === 1 && <div onClick={() => history.push('/add-movie')} className="new-movie-button">New Movie</div>}
+            </div>
             <div className="movie-card-container">
                 {movies.map(m => {
                     

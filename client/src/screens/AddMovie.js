@@ -1,27 +1,19 @@
-import { useEffect, useState } from "react"
-import { useHistory, useParams } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useHistory } from "react-router-dom"
+import '../styles/forms.css'
 
+const AddMovie = (props) => {
 
-const EditMovie = (props) => {
-    
-    const { id } = useParams()
     const history = useHistory()
     const [formState, setFormState] = useState({})
 
     useEffect(() => {
-
         if (props.user.admin !== 1) {
             history.push('/')
         }
-
-        fetch('/movies/' + id)
-            .then(res => res.json())
-            .then(movie => setFormState(movie))
-        
         return () => {
             setFormState({})
         }
-        
     }, [])
 
     const handleInputChange = (event) => {
@@ -35,9 +27,9 @@ const EditMovie = (props) => {
     const handleSubmit = (event) => {
         
         event.preventDefault()
-        
+
         const fetchOptions = {
-            method: 'PUT',
+            method: 'POST',
             headers: {
                 'Authorization': 'Bearer ' + sessionStorage.getItem('token'),
                 'Accept': 'application/json',
@@ -46,35 +38,35 @@ const EditMovie = (props) => {
             body: JSON.stringify(formState)
         }
         
-        fetch('/movies/' + id, fetchOptions)
+        fetch('/movies', fetchOptions)
             .then(history.push('/'))
     }
 
-    return(
+    return (
         <div>
-            <h1>Edit Movie N° {id}</h1>
+            <h1>New Movie</h1>
             <form onSubmit={handleSubmit}>
                 <label>
                     Title
-                    <input onChange={handleInputChange} required name="title" type="text" maxLength="45" value={formState['title']}/>
+                    <input onChange={handleInputChange} required name="title" type="text" maxLength="45" />
                 </label>
                 <label>
                     Year
-                    <input onChange={handleInputChange} required name="year" type="number" min="1900" max="2022" value={formState['year']}/>
+                    <input onChange={handleInputChange} required name="year" type="number" min="1900" max="2022" />
                 </label>
                 <label>
                     Director
-                    <input onChange={handleInputChange} required name="director" type="text" maxLength="45" value={formState['director']}/>
+                    <input onChange={handleInputChange} required name="director" type="text" maxLength="45" />
                 </label>
                 <label>
                     Image URL
-                    <input onChange={handleInputChange} required name="imageurl" type="text" maxLength="100" value={formState['imageurl']}/>
+                    <input onChange={handleInputChange} required name="imageurl" type="text" maxLength="100" />
                 </label>
 
-                <input type="submit" value="Save Changes" className="submit-button" />
+                <input type="submit" value="Add new movie" className="submit-button" />
             </form>
         </div>
     )
 }
 
-export default EditMovie
+export default AddMovie

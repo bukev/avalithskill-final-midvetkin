@@ -1,0 +1,42 @@
+form {
+    display: flex;
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 400;
+    width: 350px;
+    margin: 0 auto;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    font-family: inherit;
+    height: 30px;
+    margin: 8px 0 16px 0;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #f2f0f596;
+    color: #dbd6d6;
+}
+
+input:focus {
+    border: none;
+}
+
+.submit-button {
+    color: inherit;
+    height: unset;
+    padding: 8px 12px;
+    margin: 0 auto;
+    margin-top: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: all .2s ease;
+    background: #50c47c;
+    cursor: pointer;
+    border: none;
+    width: max-content;
+}

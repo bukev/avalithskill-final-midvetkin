@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useHistory } from "react-router"
+import '../styles/forms.css'
 
 const Auth = (props) => {
 
@@ -72,7 +73,7 @@ const Auth = (props) => {
                     <input onChange={handleInputChange} name="password" type="password" required/>
                 </label>
 
-                <input type="submit" value="submit" />
+                <input type="submit" value="Login" className="submit-button" />
             </form>
         </div>
     )
